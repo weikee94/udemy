@@ -19,3 +19,14 @@
 # Init Project
  - react-native init appName
  - react-native run-ios
+
+ # Notes
+ - React 
+    - knows how a component should behave
+    - knows how to take a bunch of components and make them work together
+
+- React Native
+    - knows how to take a output from a component and place it on screen
+    - provides default core components (image, text)
+
+- Only the 'root' component use 'AppRegistry'

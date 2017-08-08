@@ -30,3 +30,5 @@
     - provides default core components (image, text)
 
 - Only the 'root' component use 'AppRegistry'
+
+- alignItems move left and right, justifyContent move up and down

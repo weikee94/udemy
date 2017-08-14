@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import axios from 'axios';
+import AlbumDetail from './AlbumDetails';
 
 class AlbumList extends Component {
     state = { albums: [] };
@@ -10,13 +11,20 @@ class AlbumList extends Component {
              .then(response => this.setState({ albums: response.data }));
     }
 
+    renderAlbums() {
+        // whenever we want to reference a javascript variable wrap it with curly braces
+        return this.state.albums.map(album => 
+            <AlbumDetail key={album.title} album={album} />
+        );
+    }
+
     render() {
 
         console.log(this.state);
 
         return (
             <View>
-                <Text>Album List</Text>
+                {this.renderAlbums()}
             </View>
         );
     }

@@ -32,3 +32,42 @@
 - Only the 'root' component use 'AppRegistry'
 
 - alignItems move left and right, justifyContent move up and down
+
+- functional component
+    - used for presenting static data
+    - cant fetch data
+    ```
+    const Header = () => {
+        return <Text>Hi</Text>
+    }
+    ```
+
+- class component
+    - used for dynamic sources of data
+    - handles data changes, user event
+    - knows when it gets rendered
+    ```
+    class Header extends Component {
+        render() {
+            return <Text>Hi<Text>
+        }
+    }
+    ```
+
+- Timeline of react-native
+    - react native boots up
+    - RN decides to render 'app' to the screen
+    - App decides to render itself, Header, and Album List
+    - AlbumList realizes its about to be rendered, calls componentWillMount
+    - AlbumList makes HTTP request
+    - App, AlbumList, Header appear on screen
+    - waiting request complete
+    - HTTP request returns JSON data
+
+- Component State
+    - state is how react handles changing the content that is shown on the screen
+    - totally contain three steps
+        - setting up some default state for components
+        - after fetch data and update component data
+
+

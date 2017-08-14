@@ -1,9 +1,12 @@
 import React from 'react';
 import { View } from 'react-native';
 
-const Card = () => {
+
+// Anytime we pass a componet that we write another compoenent that component will show up on the prop's object as props dot children.
+const Card = (props) => {
     return (
         <View style={styles.containerStyle}>
+            {props.children}
         </View>
     );
 };

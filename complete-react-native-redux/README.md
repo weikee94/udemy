@@ -82,3 +82,4 @@
 
 - Whenever we want to communicate from a parent component to a child component we use props; state is for internal recordkeeping, we use state whenever we want to update some amount of data
 
+

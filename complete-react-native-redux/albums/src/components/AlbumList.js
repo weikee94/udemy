@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import axios from 'axios';
 import AlbumDetail from './AlbumDetails';
 
@@ -23,9 +23,10 @@ class AlbumList extends Component {
         console.log(this.state);
 
         return (
-            <View>
+            // whenever you have a scroll view you must add a style property of flex 1 to your root element
+            <ScrollView>
                 {this.renderAlbums()}
-            </View>
+            </ScrollView>
         );
     }
 }

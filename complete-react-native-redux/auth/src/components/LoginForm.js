@@ -4,7 +4,7 @@ import { Button, Card, CardSection, Input } from './common';
 class LoginForm extends Component {
 //state is what we do deal with user feedback
 
-state = { email: '' };
+state = { email: '', password: '' };
 
 	render() {
 		return (
@@ -18,7 +18,13 @@ state = { email: '' };
 					 />
 				</CardSection>
 				<CardSection>
-
+					<Input
+						secureTextEntry
+						placeholder="password"
+						label="Password"
+						value={this.state.password}
+						onChangeText={password => this.setState({ password })}
+					/>
 				</CardSection>
 				<CardSection>
 					<Button>

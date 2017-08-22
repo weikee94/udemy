@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 import firebase from 'firebase';
-import { Button, Card, CardSection, Input } from './common';
+import { Button, Card, CardSection, Input, Spinner } from './common';
 
 class LoginForm extends Component {
 //state is what we do deal with user feedback
 
-state = { email: '', password: '' , error: ''};
+state = { email: '', password: '' , error: '', loading: false };
 
 // helper method
 onButtonPress() {
 	const { email, password } = this.state;
 
-	this.setState({ error: '' });
+	this.setState({ error: '', loading: true });
 
 	// this will return promise(promise in javascript is a construct for handling some amount of asynchronous code, it will make request on firebase)
 	firebase.auth().signInWithEmailAndPassword(email, password)
@@ -24,6 +24,16 @@ onButtonPress() {
 						});
 			});
 }
+	renderButton() {
+		if(this.state.loading) {
+			return <Spinner size="small" />;
+		}
+		return(
+			<Button onPress={this.onButtonPress.bind(this)}>
+				Log In
+			</Button>
+		);
+	}
 
 	render() {
 		return (
@@ -49,9 +59,7 @@ onButtonPress() {
 					{this.state.error}
 				</Text>
 				<CardSection>
-					<Button onPress={this.onButtonPress.bind(this)}>
-						Log In
-					</Button>
+					{this.renderButton()}
 				</CardSection>
 			</Card>
 		);

@@ -12,6 +12,8 @@ state = { email: '', password: '' , error: ''};
 onButtonPress() {
 	const { email, password } = this.state;
 
+	this.setState({ error: '' });
+
 	// this will return promise(promise in javascript is a construct for handling some amount of asynchronous code, it will make request on firebase)
 	firebase.auth().signInWithEmailAndPassword(email, password)
 			.catch(() => {

@@ -21,3 +21,19 @@ console.log(d);
 
 let e = `hello ${b}`;
 console.log(e);
+
+
+//understanding and spread operator
+let arrayA = [3, 4];
+let arrayB = [1, 2, ...arrayA, 5, 6];
+
+console.log(arrayB);
+
+function print(a, b, c) {
+	console.log(a, b, c);
+}
+
+let arrayC = [7, 8, 9];
+print(...arrayC);
+
+

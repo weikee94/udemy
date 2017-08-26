@@ -36,4 +36,16 @@ function print(a, b, c) {
 let arrayC = [7, 8, 9];
 print(...arrayC);
 
+function butter() {
+  let a = [1, 2, 3];
+  let c = [4, 5, 6];
+  let ca = [...a, ...c];
+  return ca;
+}
 
+butter(4, 5, 6);
+
+// destructuring assignment- arrays
+let number = [1, 2];
+let [anumber, bnumber] = number;
+console.log(anumber, bnumber);

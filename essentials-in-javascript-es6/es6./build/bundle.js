@@ -72,9 +72,63 @@ module.exports = __webpack_require__(1);
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-console.log("Hello From Webpack");
+"use strict";
+
+
+var a = 'Hello';
+
+console.log(a);
+
+// stand alone block
+{
+  var _a = 'GoodBye';
+  console.log(_a);
+}
+
+// const enable protection for variables that must remain the same (const cannot be reassign)
+var array = [1, 2, 3];
+array.push(4);
+console.log(array);
+
+// template literals/strings
+var c = 'c';
+var b = 'b';
+var d = c + '' + b;
+console.log(d);
+
+var e = 'hello ' + b;
+console.log(e);
+
+//understanding and spread operator
+var arrayA = [3, 4];
+var arrayB = [1, 2].concat(arrayA, [5, 6]);
+
+console.log(arrayB);
+
+function print(a, b, c) {
+  console.log(a, b, c);
+}
+
+var arrayC = [7, 8, 9];
+print.apply(undefined, arrayC);
+
+function butter() {
+  var a = [1, 2, 3];
+  var c = [4, 5, 6];
+  var ca = [].concat(a, c);
+  return ca;
+}
+
+butter(4, 5, 6);
+
+// destructuring assignment- arrays
+var number = [1, 2];
+var anumber = number[0],
+    bnumber = number[1];
+
+console.log(anumber, bnumber);
 
 /***/ })
 /******/ ]);

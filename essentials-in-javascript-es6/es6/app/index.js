@@ -49,3 +49,8 @@ butter(4, 5, 6);
 let number = [1, 2];
 let [anumber, bnumber] = number;
 console.log(anumber, bnumber);
+
+// destructuting assignments - objects
+let ranger = { magical: false, power: 9 };
+let { magical, power } = ranger;
+console.log(magical, power);

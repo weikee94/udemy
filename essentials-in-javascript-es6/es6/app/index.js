@@ -23,7 +23,7 @@ let e = `hello ${b}`;
 console.log(e);
 
 
-//understanding and spread operator
+//understanding and spread operator ...
 let arrayA = [3, 4];
 let arrayB = [1, 2, ...arrayA, 5, 6];
 
@@ -45,7 +45,7 @@ function butter() {
 
 butter(4, 5, 6);
 
-// destructuring assignment- arrays
+// destructuring assignment- arrays (allows us to extract data from arrays or objetcs)
 let number = [1, 2];
 let [anumber, bnumber] = number;
 console.log(anumber, bnumber);
@@ -54,3 +54,31 @@ console.log(anumber, bnumber);
 let ranger = { magical: false, power: 9 };
 let { magical, power } = ranger;
 console.log(magical, power);
+
+// arrow function
+// arrow functions do not bind their own this
+// this is an object within the function scope, the function then bind key and values to the object 
+function blastOff() {
+  console.log("3 2 1 blastoff!");
+}
+
+setTimeout(function(){
+  blastOff();
+}, 1000);
+
+const blastOffArr = () => {
+  console.log("3 2 1 blastoff!");
+}
+
+blastOffArr();
+
+// arrow with map method
+let points = [1, 2, 3];
+
+let addOne = (element) => {
+  return element + 1;
+}
+
+points = points.map(addOne);
+console.log(points);
+

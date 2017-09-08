@@ -9,21 +9,38 @@ class LoginForm extends Component {
 state = { email: '', password: '' , error: '', loading: false };
 
 // helper method
-onButtonPress() {
-	const { email, password } = this.state;
+	onButtonPress() {
+		const { email, password } = this.state;
 
-	this.setState({ error: '', loading: true });
+		this.setState({ error: '', loading: true });
 
-	// this will return promise(promise in javascript is a construct for handling some amount of asynchronous code, it will make request on firebase)
-	firebase.auth().signInWithEmailAndPassword(email, password)
+		// this will return promise(promise in javascript is a construct for handling some amount of asynchronous code, it will make request on firebase)
+		firebase.auth().signInWithEmailAndPassword(email, password)
+			.then(this.onLoginSuccess.bind(this))
 			.catch(() => {
 				// in order to show error message need rerender using component level state
 				firebase.auth().createUserWithEmailAndPassword(email, password)
-						.catch(() => {
-							this.setState({ error: 'Authentication Failed' });
-						});
+					.then(this.onLoginSuccess.bind(this))
+					.catch(this.onLoginFail.bind(this));
 			});
-}
+	}
+
+	onLoginFail() {
+		this.setState({
+			error: 'Authentication Failed',
+			loading: false
+		});
+	}
+
+	onLoginSuccess() {
+		this.setState({
+			email: '',
+			password: '',
+			loading: false,
+			error: ''
+		});
+	}
+
 	renderButton() {
 		if(this.state.loading) {
 			return <Spinner size="small" />;

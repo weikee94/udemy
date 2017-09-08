@@ -5,6 +5,9 @@ import { Header } from './components/common';
 import LoginForm from './components/LoginForm';
 
 class App extends Component {
+    state = { loggedIn: false }
+
+
     //lifecycle method are method that are automatically invoked inside of our component
     componentWillMount() {
         firebase.initializeApp({
@@ -14,6 +17,14 @@ class App extends Component {
             projectId: 'udemy-authentication-96113',
             storageBucket: 'udemy-authentication-96113.appspot.com',
             messagingSenderId: '1031829487568'
+        });
+
+        firebase.auth().onAuthStateChanged((user) => {
+            if(user) {
+                this.setState({ loggedIn: true });
+            }else {
+                this.setState({ loggedIn: false });
+            }
         });
     }
     render() {

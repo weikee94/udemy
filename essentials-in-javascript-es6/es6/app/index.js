@@ -127,11 +127,30 @@ let Frodo = new Hobbit('Gem', 4.5);
 Frodo.greed();
 console.log(Frodo);
 
-
+// Promise handles in React, handles the eventual result of an operation and determines if it returns a success or failure
 import React , { Component } from 'react';
 import ReactDom from 'react-dom';
 
+const api_key = 'da2ec446d706250d096d5f89d8331c0d';
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      city: 'San Francisco'
+    }
+  }
+
+  componentDidMount() {
+    this.grabWeather(this.state.city);
+  }
+
+  grabWeather(city) {
+    fetch(`http://api.openweathermap.org/data/2.5/weather?APPID=${api_key}&q=${city}`)
+      .then(response => response.json())
+      .then(json => console.log(json));
+  }
+
   render() {
     return (
       <div>React JS</div>

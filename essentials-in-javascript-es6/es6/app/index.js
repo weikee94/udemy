@@ -126,3 +126,17 @@ class Hobbit extends Entity {
 let Frodo = new Hobbit('Gem', 4.5);
 Frodo.greed();
 console.log(Frodo);
+
+
+import React , { Component } from 'react';
+import ReactDom from 'react-dom';
+
+class App extends Component {
+  render() {
+    return (
+      <div>React JS</div>
+    )
+  }
+}
+
+ReactDom.render(<App />, document.getElementById('root'));

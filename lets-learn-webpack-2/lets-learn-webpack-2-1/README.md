@@ -6,3 +6,5 @@
 - npm install --save-dev webpack
 - npm run-script build
 - npm install --save-dev style-loader css-loader
+- npm install sass-loader node-sass webpack --save-dev
+- npm install babel-loader babel-core --save-dev

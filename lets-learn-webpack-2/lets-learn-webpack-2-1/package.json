@@ -1,0 +1,12 @@
+{
+  "name": "lets-learn-webpack-2-1",
+  "version": "1.0.0",
+  "description": "> A [HowToCode.io](https://www.howtocode.io) tutorial on learning [Webpack 2](https://webpack.js.org)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "WeiKee",
+  "license": "MIT"
+}

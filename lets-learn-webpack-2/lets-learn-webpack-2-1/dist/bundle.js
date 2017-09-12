@@ -65,16 +65,18 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scss_main_scss__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scss_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__scss_main_scss__);
+
+
+__webpack_require__(1);
+
+var _module = __webpack_require__(6);
+
 // import './css/main.css';
-
-
 console.log("Hi webpack");
+(0, _module.hello)();
 
 /***/ }),
 /* 1 */
@@ -656,6 +658,22 @@ module.exports = function (css) {
 	return fixedCss;
 };
 
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+function hello() {
+    console.log("Hello");
+}
+
+exports.hello = hello;
 
 /***/ })
 /******/ ]);

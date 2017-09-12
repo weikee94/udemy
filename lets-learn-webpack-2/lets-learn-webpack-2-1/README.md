@@ -5,3 +5,4 @@
 - npm init -y (this is used to create package json)
 - npm install --save-dev webpack
 - npm run-script build
+- npm install --save-dev style-loader css-loader

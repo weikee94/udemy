@@ -1,44 +1,94 @@
 'use strict';
 
-// arguments object - no longer bound with arrow functions
+console.log('App.js is running!');
 
-var add = function add(a, b) {
-    // console.log(arguments);
-    return a + b;
+// JSX - JavaScript XML
+var app = {
+    title: 'Indecision App',
+    subtitle: 'Information',
+    options: []
 };
-console.log(add(55, 1, 1001));
 
-// this keyword - no longer bound
+var onFormSubmit = function onFormSubmit(e) {
+    e.preventDefault();
 
-var user = {
-    name: 'Andrew',
-    cities: ['A', 'B', 'C'],
-    printPlacesLived: function printPlacesLived() {
-        var _this = this;
+    var option = e.target.elements.option.value;
 
-        return this.cities.map(function (city) {
-            return _this.name + ' has lived ' + city;
-        });
-    }
-};
-console.log(user.printPlacesLived());
-
-// Challenge area
-
-// numbers - array of numbers
-// multiplyBy - single number
-// multiply - return a new array where the number have been multiplied
-
-var multiplier = {
-    number: [1, 5, 10],
-    multiplyBy: 3,
-    multiply: function multiply() {
-        var _this2 = this;
-
-        return this.number.map(function (nums) {
-            return nums * _this2.multiplyBy;
-        });
+    if (option) {
+        app.options.push(option);
+        renderTemplate();
+        e.target.elements.option.value = '';
     }
 };
 
-console.log(multiplier.multiply());
+// create 'remove all' button above list
+// onclick -> wipe the array -> rerender
+
+var removeAll = function removeAll() {
+    app.options = [];
+    renderTemplate();
+};
+
+var renderTemplate = function renderTemplate() {
+    var template = React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'h1',
+            null,
+            app.title
+        ),
+        app.subtitle && React.createElement(
+            'p',
+            null,
+            app.subtitle
+        ),
+        React.createElement(
+            'p',
+            null,
+            app.options.length > 0 ? 'Here are your options' : 'No options'
+        ),
+        React.createElement(
+            'p',
+            null,
+            app.options.length
+        ),
+        React.createElement(
+            'button',
+            { onClick: removeAll },
+            'remove'
+        ),
+        React.createElement(
+            'ol',
+            null,
+            React.createElement(
+                'li',
+                null,
+                'One'
+            ),
+            React.createElement(
+                'li',
+                null,
+                'Two'
+            )
+        ),
+        React.createElement(
+            'form',
+            { onSubmit: onFormSubmit },
+            React.createElement('input', { type: 'text', name: 'option' }),
+            React.createElement(
+                'button',
+                null,
+                'Add Option'
+            )
+        )
+    );
+    ReactDOM.render(template, appRoot);
+};
+
+var appRoot = document.getElementById('app');
+// Create render function that renders the new jsx
+// Call it right away
+// Call it after options array added to
+
+renderTemplate();

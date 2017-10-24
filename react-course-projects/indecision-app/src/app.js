@@ -1,53 +1,56 @@
 console.log('App.js is running!');
 
 // JSX - JavaScript XML
-
-// if statements
-// ternary operator
-// logical and operator
-
-// only render the subtitle (and p tag) if subtitle exist - logical and operator
-// render new p tag - if options.length > 0 'Here are your options' 'No options'
-
 let app = {
     title: 'Indecision App',
     subtitle: 'Information',
-    options: ['One', 'Two']
+    options: []
 };
 
-const template = (
-    <div>
-        <h1>{app.title}</h1>
-        {app.subtitle && <p>{app.subtitle}</p>}
-        <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
-        <ol>
-            <li>One</li>
-            <li>Two</li>
-        </ol>
-    </div>
-);
+const onFormSubmit = (e) => {
+    e.preventDefault();
 
-function getLocation(location) {
-    if (location) {
-        return <p>Location: {location}</p>;
+    const option = e.target.elements.option.value;
+
+    if (option) {
+        app.options.push(option);
+        renderTemplate();
+        e.target.elements.option.value = '';
     }
-}
-
-let user = {
-    name: 'Wkhaw',
-    age: 23,
-    location: 'malaysia'
 };
 
-const templateTwo = (
-    <div>
-        <h1>{user.name ? user.name : 'Anonymous'}</h1>
-        {user.age >=18 && <p>Age: {user.age}</p>}
-        {getLocation(user.location)}
-    </div>
-);
+// create 'remove all' button above list
+// onclick -> wipe the array -> rerender
+
+const removeAll = () => {
+    app.options = [];
+    renderTemplate();
+};
+
+const renderTemplate = () => {
+    const template = (
+        <div>
+            <h1>{app.title}</h1>
+            {app.subtitle && <p>{app.subtitle}</p>}
+            <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+            <p>{app.options.length}</p>
+            <button onClick={removeAll}>remove</button>
+            <ol>
+                <li>One</li>
+                <li>Two</li>
+            </ol>
+            <form onSubmit={onFormSubmit}>
+                <input type="text" name="option"/>
+                <button>Add Option</button>
+            </form>
+        </div>
+    );
+    ReactDOM.render(template, appRoot);
+};
 
 const appRoot = document.getElementById('app');
+// Create render function that renders the new jsx
+// Call it right away
+// Call it after options array added to
 
-ReactDOM.render(template, appRoot);
-
+renderTemplate();

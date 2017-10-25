@@ -21,9 +21,6 @@ var onFormSubmit = function onFormSubmit(e) {
     }
 };
 
-// create 'remove all' button above list
-// onclick -> wipe the array -> rerender
-
 var removeAll = function removeAll() {
     app.options = [];
     renderTemplate();
@@ -61,16 +58,14 @@ var renderTemplate = function renderTemplate() {
         React.createElement(
             'ol',
             null,
-            React.createElement(
-                'li',
-                null,
-                'One'
-            ),
-            React.createElement(
-                'li',
-                null,
-                'Two'
-            )
+            app.options.map(function (option) {
+                return React.createElement(
+                    'li',
+                    { key: option },
+                    'Option: ',
+                    option
+                );
+            })
         ),
         React.createElement(
             'form',

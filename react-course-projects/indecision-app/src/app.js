@@ -19,9 +19,6 @@ const onFormSubmit = (e) => {
     }
 };
 
-// create 'remove all' button above list
-// onclick -> wipe the array -> rerender
-
 const removeAll = () => {
     app.options = [];
     renderTemplate();
@@ -35,9 +32,17 @@ const renderTemplate = () => {
             <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
             <p>{app.options.length}</p>
             <button onClick={removeAll}>remove</button>
+            {
+                /*numbers.map((number) => {
+                    return <p key={number}>Number: {number}</p>;
+                })*/
+            }
             <ol>
-                <li>One</li>
-                <li>Two</li>
+            {
+               app.options.map((option) => {
+                return <li key={option}>Option: {option}</li>;
+               })
+            }  
             </ol>
             <form onSubmit={onFormSubmit}>
                 <input type="text" name="option"/>

@@ -28,3 +28,4 @@ const render = () => {
 const appRoot = document.getElementById('app');
 
 render();
+

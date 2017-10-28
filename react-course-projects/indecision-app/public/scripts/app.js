@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -18,14 +18,18 @@ var IndecisionApp = function (_React$Component) {
     }
 
     _createClass(IndecisionApp, [{
-        key: 'render',
+        key: "render",
         value: function render() {
+            var title = "Indecision";
+            var subtitle = "Put your life in the hands of a computer";
+            var options = ['Thing One', 'Thing Two', 'Thing Four'];
+
             return React.createElement(
-                'div',
+                "div",
                 null,
-                React.createElement(Header, null),
+                React.createElement(Header, { title: title, subtitle: subtitle }),
                 React.createElement(Actions, null),
-                React.createElement(Options, null),
+                React.createElement(Options, { options: options }),
                 React.createElement(AddOption, null)
             );
         }
@@ -44,20 +48,20 @@ var Header = function (_React$Component2) {
     }
 
     _createClass(Header, [{
-        key: 'render',
+        key: "render",
         value: function render() {
             return React.createElement(
-                'div',
+                "div",
                 null,
                 React.createElement(
-                    'h1',
+                    "h1",
                     null,
-                    'Indecision'
+                    this.props.title
                 ),
                 React.createElement(
-                    'h2',
+                    "h2",
                     null,
-                    'Put your life in the hands of a computer'
+                    this.props.subtitle
                 )
             );
         }
@@ -76,15 +80,20 @@ var Actions = function (_React$Component3) {
     }
 
     _createClass(Actions, [{
-        key: 'render',
+        key: "handleActions",
+        value: function handleActions() {
+            alert('this is click from actions');
+        }
+    }, {
+        key: "render",
         value: function render() {
             return React.createElement(
-                'div',
+                "div",
                 null,
                 React.createElement(
-                    'button',
-                    null,
-                    'What should I do?'
+                    "button",
+                    { onClick: this.handleActions },
+                    "What should I do?"
                 )
             );
         }
@@ -92,6 +101,10 @@ var Actions = function (_React$Component3) {
 
     return Actions;
 }(React.Component);
+
+// Add Remove all button
+// Setup handleRemoveAll -> alert some messages
+// setup onclick to fire the method
 
 var Options = function (_React$Component4) {
     _inherits(Options, _React$Component4);
@@ -103,17 +116,28 @@ var Options = function (_React$Component4) {
     }
 
     _createClass(Options, [{
-        key: 'render',
+        key: "handleRemoveAll",
+        value: function handleRemoveAll() {
+            alert('remove all detected');
+        }
+    }, {
+        key: "render",
         value: function render() {
             return React.createElement(
-                'div',
+                "div",
                 null,
                 React.createElement(
-                    'h3',
-                    null,
-                    'Options component here'
+                    "button",
+                    { onClick: this.handleRemoveAll },
+                    "remove all"
                 ),
-                React.createElement(Option, null)
+                React.createElement(
+                    "ol",
+                    null,
+                    this.props.options.map(function (option) {
+                        return React.createElement(Option, { key: option, optionText: option });
+                    })
+                )
             );
         }
     }]);
@@ -131,22 +155,22 @@ var Option = function (_React$Component5) {
     }
 
     _createClass(Option, [{
-        key: 'render',
+        key: "render",
         value: function render() {
             return React.createElement(
-                'div',
+                "div",
                 null,
-                React.createElement(
-                    'h6',
-                    null,
-                    'Option Here'
-                )
+                this.props.optionText
             );
         }
     }]);
 
     return Option;
 }(React.Component);
+
+// 1. Setup the form with text input and submit button
+// 2. Wire up onSubmit
+// 3. handleAddOption -> fetch the value typed -> if valud, then alert
 
 var AddOption = function (_React$Component6) {
     _inherits(AddOption, _React$Component6);
@@ -158,15 +182,31 @@ var AddOption = function (_React$Component6) {
     }
 
     _createClass(AddOption, [{
-        key: 'render',
+        key: "handleAddOption",
+        value: function handleAddOption(e) {
+            e.preventDefault();
+
+            var option = e.target.elements.option.value.trim();
+
+            if (option) {
+                alert(option);
+            }
+        }
+    }, {
+        key: "render",
         value: function render() {
             return React.createElement(
-                'div',
+                "div",
                 null,
                 React.createElement(
-                    'h4',
-                    null,
-                    'Add Options Component here'
+                    "form",
+                    { onSubmit: this.handleAddOption },
+                    React.createElement("input", { type: "text", name: "option" }),
+                    React.createElement(
+                        "button",
+                        null,
+                        "Add Option"
+                    )
                 )
             );
         }

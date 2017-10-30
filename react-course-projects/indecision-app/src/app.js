@@ -45,8 +45,14 @@ class Actions extends React.Component {
 // setup onclick to fire the method
 
 class Options extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleRemoveAll = this.handleRemoveAll.bind(this);
+    }
+
     handleRemoveAll() {
-        alert('remove all detected');
+        // alert('remove all detected');
+        console.log(this.props.options);
     }
 
     render() {
@@ -101,5 +107,24 @@ class AddOption extends React.Component {
         );
     }
 }
+
+const obj = {
+    name: 'Vik',
+    getName() {
+        return this.name;
+    }
+}
+
+const func = function() {
+    console.log(this);
+}
+
+func();
+
+
+// this is what we called referencing
+const getName = obj.getName.bind(obj);
+
+console.log(getName());
 
 ReactDOM.render(<IndecisionApp />, document.getElementById('app'));

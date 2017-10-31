@@ -62,58 +62,108 @@ class IndecisionApp extends React.Component {
     }
 }
 
-class Header extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1>{this.props.title}</h1>
-                <h2>{this.props.subtitle}</h2>
-            </div>
-        );
-    }
-}
+// class Header extends React.Component {
+//     render() {
+//         return (
+//             <div>
+//                 <h1>{this.props.title}</h1>
+//                 <h2>{this.props.subtitle}</h2>
+//             </div>
+//         );
+//     }
+// }
 
-class Actions extends React.Component {
-    render() {
-        return (
-            <div>
-                <button 
-                    onClick={this.props.handlePick}
-                    disabled={!this.props.hasOptions}
-                >
-                    What should I do?
-                </button>
-            </div>
-        );
-    }
-}
+// Stateless functional component
+const Header = (props) => {
+    return (
+        <div>
+            <h1>{props.title}</h1>
+            <h2>{props.subtitle}</h2>
+        </div>
+    );
+};
 
-class Options extends React.Component {
-    render() {
-        return (
-            <div>
-                <button onClick={this.props.handleDeleteOptions}>remove all</button>
-                <ol>    
-                    {
-                        this.props.options.map((option) => {
-                            return <Option key={option} optionText={option}/>;
-                        })
-                    }
-                </ol>
-            </div>
-        );
-    }
-}
 
-class Option extends React.Component {
-    render() {
-        return (
-            <div>
-                {this.props.optionText}
-            </div>
-        );
-    }
-}
+// class Actions extends React.Component {
+//     render() {
+//         return (
+//             <div>
+//                 <button 
+//                     onClick={this.props.handlePick}
+//                     disabled={!this.props.hasOptions}
+//                 >
+//                     What should I do?
+//                 </button>
+//             </div>
+//         );
+//     }
+// }
+
+// Stateless Functional Component
+const Actions = (props) => {
+    return (
+        <div>
+            <button 
+                onClick={props.handlePick}
+                disabled={!props.hasOptions}
+            >
+                What should I do?
+            </button>
+        </div>
+    );
+};
+
+// class Options extends React.Component {
+//     render() {
+//         return (
+//             <div>
+//                 <button onClick={this.props.handleDeleteOptions}>remove all</button>
+//                 <ol>    
+//                     {
+//                         this.props.options.map((option) => {
+//                             return <Option key={option} optionText={option}/>;
+//                         })
+//                     }
+//                 </ol>
+//             </div>
+//         );
+//     }
+// }
+
+// Stateless Functional Component
+const Options = (props) => {
+    return (
+        <div>
+            <button onClick={props.handleDeleteOptions}>remove all</button>
+            <ol>    
+                {
+                    props.options.map((option) => {
+                        return <Option key={option} optionText={option}/>;
+                    })
+                }
+            </ol>
+        </div>
+    );
+};
+
+// class Option extends React.Component {
+//     render() {
+//         return (
+//             <div>
+//                 {this.props.optionText}
+//             </div>
+//         );
+//     }
+// }
+
+// Stateless Functional Component
+const Option = (props) => {
+    return (
+        <div>
+            {props.optionText}
+        </div>
+    );
+};
 
 class AddOption extends React.Component {
     constructor(props) {

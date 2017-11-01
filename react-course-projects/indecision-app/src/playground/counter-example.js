@@ -38,7 +38,7 @@ class Counter extends React.Component {
 
         // step 1 setting up default object
         this.state = {
-            count: 0
+            count: props.count
         };
     }
 
@@ -87,6 +87,9 @@ class Counter extends React.Component {
 // Use console.log to print method name
 // Wire up onClick & bind in the constructor
 
+Counter.defaultProps = {
+    count: 0
+};
 
 
 ReactDOM.render(<Counter />, document.getElementById('app'));

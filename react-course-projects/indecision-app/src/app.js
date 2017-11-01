@@ -10,6 +10,31 @@ class IndecisionApp extends React.Component {
         }
     }
 
+    componentDidMount() {
+        try {
+            const json = localStorage.getItem('options');
+            const options = JSON.parse(json);
+
+            if(options) {
+                this.setState(() => ({ options }));
+            }
+        } catch (e) {
+            // Do nothing at all
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.options.length !== this.state.options.length) {
+            const json = JSON.stringify(this.state.options);
+            localStorage.setItem('options', json);
+        }
+    }
+
+    componentUnMount() {
+        console.log('Unmount success');
+    }
+    
+
     // handleDeleteOptions
     handleDeleteOptions() {
         // this.setState(() => {
@@ -33,6 +58,8 @@ class IndecisionApp extends React.Component {
 
         // console.log(optionToRemove);
     }
+
+
 
     // handlePick - pass down to Action and setup onClick- bind here
     // randomly pick and option and alert it
@@ -164,6 +191,7 @@ const Options = (props) => {
     return (
         <div>
             <button onClick={props.handleDeleteOptions}>remove all</button>
+            {props.options.length === 0 && <p>Please add an option to get started!</p>}
             <ol>    
                 {
                     props.options.map((option) => {
@@ -177,6 +205,7 @@ const Options = (props) => {
         </div>
     );
 };
+
 
 // class Option extends React.Component {
 //     render() {
@@ -226,6 +255,10 @@ class AddOption extends React.Component {
         this.setState(() => ({
             error: error
         }));
+
+        if (!error) {
+            e.target.elements.option.value = '';
+        }
     }
 
     render() {

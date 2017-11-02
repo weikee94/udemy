@@ -15,11 +15,24 @@
 // imoort isAdult and canDrink
 // use bvoth printing result to the console
 
-import isSenior, { isAdult, canDrink } from './person';
+// import isSenior, { isAdult, canDrink } from './person';
 
 // setting the default export and function
 // grab the default and call it
 
-console.log('can drink 19: '+ canDrink(19));
-console.log('is adult 10: ' + isAdult(10));
-console.log('is senior 66: ' + isSenior(64));
+// console.log('can drink 19: '+ canDrink(19));
+// console.log('is adult 10: ' + isAdult(10));
+// console.log('is senior 66: ' + isSenior(64));
+
+
+// install -> import -> use
+// import validator from 'validator';
+
+// console.log(validator.isEmail('abc@gmail.com'));
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const template = <p>Testing</p>;
+
+ReactDOM.render(template, document.getElementById('app'));

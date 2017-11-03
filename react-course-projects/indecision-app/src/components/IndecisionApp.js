@@ -3,21 +3,23 @@ import { AddOption } from './AddOption';
 import { Header } from './Header';
 import { Actions } from './Actions';
 import { Options } from './Options';
-
-
-// pull the state out of constructor
-// convert all 4 event handlers to class properties (arrow function)
-// delete the constructor completely
-// start with class properties and end with method
+import { OptionModal } from './OptionModal';
 
 class IndecisionApp extends React.Component {
    state = {
-       options: []
+       options: [],
+       selectedOption: undefined
    }
 
    handleDeleteOptions = () => {
         this.setState(() => ({
             options: []
+        }));
+    }
+
+    handleClearSelectedOption = () => {
+        this.setState(() => ({
+            selectedOption: undefined
         }));
     }
 
@@ -32,7 +34,10 @@ class IndecisionApp extends React.Component {
     handlePick = () => {
         const ranNum = Math.floor(Math.random() * this.state.options.length);
         const option = this.state.options[ranNum];
-        alert(option);
+        // use setState to set SelectedOptions
+        this.setState(() => ({
+            selectedOption: option 
+        }));
     }
 
     handleAddOption = (option) => {
@@ -87,6 +92,10 @@ class IndecisionApp extends React.Component {
                 />
                 <AddOption 
                     handleAddOption={this.handleAddOption}
+                />
+                <OptionModal 
+                    selectedOption={this.state.selectedOption}
+                    handleClearSelectedOption={this.handleClearSelectedOption}
                 />
             </div>
         );

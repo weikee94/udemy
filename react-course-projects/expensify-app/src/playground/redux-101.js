@@ -1,6 +1,5 @@
 import { createStore } from 'redux';
 
-
 const add = (data) => {
     return data.a + data.b;
 }
@@ -31,8 +30,11 @@ const set = ({ count = 1 } = {}) => ({
     count: count
 });
 
-// redux state container
-const store = createStore((state = { count: 0 }, action) => {
+// reducer
+// 1. is a pure function
+// 2. never change state or action
+
+const countReducer = () => (state = { count: 0 }, action) => {
     switch (action.type) {
         case 'INCREMENT':
             return {
@@ -53,12 +55,14 @@ const store = createStore((state = { count: 0 }, action) => {
         default:
             return state;
     }
-});
+};
+
+// redux state container
+const store = createStore(countReducer());
 
 store.subscribe(() => {
     console.log(store.getState());
 });
-
 
 store.dispatch(incrementCount());
 
@@ -72,5 +76,5 @@ store.dispatch(decrementCount());
 
 store.dispatch(decrementCount({ decrementBy : 10 }));
 
-store.dispatch(set({ count: 101 }));
+store.dispatch(set({ count: 99 }));
 

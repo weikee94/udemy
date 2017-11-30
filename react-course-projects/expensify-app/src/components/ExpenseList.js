@@ -4,25 +4,23 @@ import ExpenseListItem from './ExpenseListItem';
 import selectExpenses from '../selectors/expenses';
 
 export const ExpenseList = (props) => (
-    <div>
-        {
-            props.expenses.length === 0 ? (
-                <p>No Expense</p>
-            ) : (
-                props.expenses.map((expense) => {
-                    return <ExpenseListItem key={expense.id} {...expense}/>
-                })
-            )
-        }
-    </div>
+  <div>
+    {
+      props.expenses.length === 0 ? (
+        <p>No expenses</p>
+      ) : (
+          props.expenses.map((expense) => {
+            return <ExpenseListItem key={expense.id} {...expense} />;
+          })
+        )
+    }
+  </div>
 );
 
-// function that map store state to component props
 const mapStateToProps = (state) => {
-    return {
-        expenses: selectExpenses(state.expenses, state.filters)
-    };
+  return {
+    expenses: selectExpenses(state.expenses, state.filters)
+  };
 };
 
 export default connect(mapStateToProps)(ExpenseList);
-

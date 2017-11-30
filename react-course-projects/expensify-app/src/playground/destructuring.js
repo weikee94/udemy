@@ -1,46 +1,45 @@
-// Object Destructuring
+//
+// Object destructuring
+//
+
 // const person = {
-//     name: 'weikee',
-//     age: 23,
-//     location: {
-//         city: 'johor',
-//         temp: 32
-//     }
+//   name: 'Andrew',
+//   age: 27,
+//   location: {
+//     city: 'Philadelphia',
+//     temp: 88
+//   }
 // };
 
-// const { name: firstName = 'Anony', age } = person;
-// const { city, temp } = person.location;
- 
-// console.log(`${city} with temp of ${temp}`);
-// console.log(`${firstName} with age ${age}`);
+// const { name: firstName = 'Anonymous', age } = person;
+// console.log(`${firstName} is ${age}.`);
 
-// challenge
+// const { city, temp: temperature } = person.location;
+// if (city && temperature) {
+//   console.log(`It's ${temperature} in ${city}.`);
+// }
+
 // const book = {
-//     title: 'Ego',
-//     author: 'Ryan',
-//     publisher: {
-//         name: 'Peng'
-//     }
+//   title: 'Ego is the Enemy',
+//   author: 'Ryan Holiday',
+//   publisher: {
+//     // name: 'Penguin'
+//   }
 // };
 
-// const { name: publisherName = 'Annony' } = book.publisher;
-// console.log(`publisher with name ${publisherName}`);
+// const { name: publisherName = 'Self-Published' } = book.publisher;
 
-// Array Destructuring
-const address = [
-    '1299 Street',
-    'New York',
-    'Pen',
-    '19147'
-];
+// console.log(publisherName); // Penguin, Self-Published
 
-const [ street, city, state, zip ] = address;
+//
+// Array destructuring
+//
 
-console.log(`You are in ${street} ${city}`);
+// const address = ['1299 S Juniper Street', 'Philadelphia', 'Pennsylvania', '19147'];
+// const [, city, state = 'New York'] = address;
+// console.log(`You are in ${city} ${state}.`);
 
-// challenge
-// grab first and third items using array destructuring
-const item = ['Coffee', '$2.00', '$2.50', '$2.75'];
-const [coffeName, smallPrice, mediumPrice, largePrice] = item;
-console.log(`${coffeName} small with price ${smallPrice}`);
+const item = ['Coffee (iced)', '$3.00', '$3.50', '$3.75'];
+const [itemName, , mediumPrice] = item;
 
+console.log(`A medium ${itemName} costs ${mediumPrice}`);
